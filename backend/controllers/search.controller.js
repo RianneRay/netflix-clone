@@ -20,7 +20,7 @@ export async function searchPerson(req, res) {
           createdAt: new Date(),
         },
       },
-    })
+    });
     
     res.status(200).json({success:true, content:response.results});
   } catch (error) {
