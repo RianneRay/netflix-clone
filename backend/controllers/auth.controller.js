@@ -37,7 +37,7 @@ export const signup = async (req, res) => {
   
   const PROFILE_PICS = ["/avatar1.png", "/avatar2.png", "/avatar3.png"]
   
-  const image = PROFILE_PICS[Math.floor(Math.random() * PROFILE_PICS.lenght)];
+  const image = PROFILE_PICS[Math.floor(Math.random() * PROFILE_PICS.length)];
   
   const newUser = new User({
     username,
@@ -69,13 +69,13 @@ export const login = async (req, res) => {
     const user = await User.findOne({email:email})
     
     if(!user) {
-      res.status(404).json({success:false, message: "invalid credentials"})
+      return res.status(404).json({success:false, message: "invalid credentials"})
     }
     
     const isPasswordCorrect = await bcryptjs.compare(password, user.password)
     
     if(!isPasswordCorrect) {
-      res.status(404).json({success: false, message: "invalid credentials"})
+      return res.status(404).json({success: false, message: "invalid credentials"})
     }
     
     generateTokenAndSetCookie(user._id, res);
@@ -100,3 +100,12 @@ export const logout = async (req, res) => {
   }
 }
 
+export async function authCheck(req, res) {
+  try {
+    res.status(200).json({success: true, user:req.user});
+  } catch (error) {
+    console.log("error in authCheck controller", error.message)
+    res.status(500).json({success: false, message: "internal server error"})
+    
+  }
+}

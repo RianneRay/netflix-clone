@@ -1,14 +1,20 @@
 import { useState } from "react"
 import { Link } from 'react-router-dom'
+import { useAuthStore } from "../store/authUser.js"
 
 const SignUpPage = () => {
-  const [email, setEmail] = useState("");
+  const {searchParams} = new URL(document.location);
+  const emailValue = searchParams.get("email");
+  
+  const [email, setEmail] = useState(emailValue || "");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   
+  const { signup } = useAuthStore();
+  
   const handleSignUp = (e) => {
     e.preventDefault();
-    console.log(email, username, password)
+    signup({email, username, password})
   }
   
   return <div className="h-screen w-full hero-bg">
@@ -25,7 +31,7 @@ const SignUpPage = () => {
         
         <form className="space-y-4" onSubmit={handleSignUp}>
           <div>
-            <label htmlfor="email" className="text-sm font-medium text-gray-300 block">Email
+            <label htmlFor="email" className="text-sm font-medium text-gray-300 block">Email
             </label>
             <input type="email"
               className="w-full px-3 py-2 mt-1 border border-gray-700 rounded-md bg-transparent text-white focus:outline-none focuw-ring"  
@@ -37,10 +43,10 @@ const SignUpPage = () => {
           </div>
           
           <div>
-            <label htmlfor="username" className="text-sm font-medium text-gray-300 block">Username
+            <label htmlFor="username" className="text-sm font-medium text-gray-300 block">Username
             </label>
             <input type="text"
-              className="w-full px-3 py-2 mt-1 border border-gray-700 rounded-md bg-transparent text-white focus:outline-none focuw-ring"  
+              className="w-full px-3 py-2 mt-1 border border-gray-700 rounded-md bg-transparent text-white focus:outline-none focus-ring"  
               placeholder="johndoe"
               id="username"
               value={username}
@@ -49,7 +55,7 @@ const SignUpPage = () => {
           </div>
           
           <div>
-            <label htmlfor="password" className="text-sm font-medium text-gray-300 block">Password
+            <label htmlFor="password" className="text-sm font-medium text-gray-300 block">Password
             </label>
             <input type="password"
               className="w-full px-3 py-2 mt-1 border border-gray-700 rounded-md bg-transparent text-white focus:outline-none focuw-ring"  
