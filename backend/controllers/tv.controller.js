@@ -59,7 +59,7 @@ export async function getTvsByCategory(req, res) {
   
   try {
     const data = await fetchFromTMDB(`https://api.themoviedb.org/3/tv/${category}?language=en-US&page=1`)
-    res.status(200).json({succesa: true, category: data.results})
+    res.status(200).json({success: true, category: data.results})
   } catch (error) {
     res.status(500).json({success:false, message: "Internal server error"})
   }
