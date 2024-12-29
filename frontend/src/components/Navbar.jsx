@@ -59,7 +59,7 @@ const Navbar = () => {
         >
           TV shows
         </Link>
-        <Link to={"/search"} className="block hover:underline p-2"
+        <Link to={"/history"} className="block hover:underline p-2"
         >
           Search history
         </Link>

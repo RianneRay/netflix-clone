@@ -74,7 +74,7 @@ export async function searchTv(req, res) {
           id:response.results[0].id,
           image:response.results[0].poster_path,
           title:response.results[0].name,
-          searcType: "tv",
+          searchType: "tv",
           createdAt: new Date(),
         },
       },
