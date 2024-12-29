@@ -64,9 +64,29 @@ In your terminal, you can run the following commands:
 - `npm run build`: Installs all dependencies and builds the frontend React app into a static folder.
 - `npm run start`: Starts the app in production mode. This serves the backend API and the static frontend files.
 
+## Environment Variables Setup
+
+Before running the application, you need to configure your environment variables. Create a `.env` file in the root of your project and add the following values:
+
+- `MONGO_URI`: The connection string to your MongoDB database (use MongoDB Atlas or your local MongoDB URI).
+- `PORT`: The port on which the server will run.
+- `JWT_SECRET`: A secret key used for JWT authentication.
+- `NODE_ENV`: Set to `development` during development or `production` for production.
+- `TMDB_API_KEY`: Your API key from TMDB (The Movie Database) to fetch movie data.
+
+Once you've added these variables to your `.env` file, the application will be ready to run.
+
+**Note**: Make sure that your `.env` file is added to `.gitignore` to avoid exposing sensitive information, like your database URI and JWT secret, in your version control.
+
 ## Tech Stack
 
 - **Frontend**: React, React Router, Tailwind CSS
 - **Backend**: Node.js, Express.js, MongoDB
 - **Authentication**: JWT (JSON Web Token)
 - **Database**: MongoDB (locally or using MongoDB Atlas)
+
+## Contact
+
+If you have any questions, feel free to reach out to:
+- **Email**: [riannerayrelevo04@gmail.com](mailto:riannerayrelevo04@gmail.com)
+- **GitHub**: [RianneRay](https://github.com/RianneRay)
