@@ -23,7 +23,7 @@ Make sure you have the following installed:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/netflix-clone.git
+git clone https://github.com/RianneRay/netflix-clone.git
 cd netflix-clone
 ```
 ## 2. Install and Build the App
